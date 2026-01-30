@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: adventofcode-day1-tests
+    working_dir: /app
+    volumes:
+      # Mount the current directory for live code changes during development
+      - .:/app
+    command: pytest tests/ -v
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+
